@@ -46,14 +46,24 @@ Plots.heatmap(grid, fill=true, c=cmap,xaxis=nothing,yaxis=nothing,legend=nothing
 
 
 # ? create labyrinthe
-# TODO : Update wOddRange and wEvenRange to avoid testing a value already did
 wOddRange = 3:2:n-2
 wEvenRange = 2:2:n-1
 
-function plotUpdate(XY)
-  global grid, nb, wOddRange, wEvenRange
+wallRestHor = Array{Tuple{Int64, Int64},1}(undef, 0)  
+wallRestVer = Array{Tuple{Int64, Int64},1}(undef, 0)
 
-  (x, y, X, Y) = (XY==0) ? (rand(wOddRange), rand(wEvenRange), 1, 0) : (rand(wEvenRange), rand(wOddRange), 0, 1) 
+for i in wOddRange
+  for j in wEvenRange
+    push!(wallRestHor, (i, j))
+    push!(wallRestVer, (j, i))
+  end
+end
+    
+print(wallRestHor[149][2])
+function plotUpdate(XY)
+  global grid, nb, wallRestHor, wallRestVer
+  wallRand = (XY==0) ? rand(1:length(wallRestHor)) : rand(1:length(wallRestVer))
+  ( (x, y), X, Y) = (XY==0) ? ( (wallRestHor[wallRand][1], wallRestHor[wallRand][2] ), 1, 0) : ( (wallRestVer[wallRand][1], wallRestVer[wallRand][2]), 0, 1) 
 
   wallSelect = grid[x, y]
   if wallSelect==1 && grid[x+X,y+Y]!=grid[x-X,y-Y]
@@ -61,7 +71,10 @@ function plotUpdate(XY)
     grid[x, y] = grid[x+X,y+Y]
     replace!(grid, grid[x+X,y+Y]=>grid[x-X,y-Y])
     nb-=1
-  
+
+    (XY==0) ? deleteat!(wallRestHor, wallRand) : deleteat!(wallRestVer, wallRand)
+
+    Plots.heatmap(grid, fill=true, c=cmap,xaxis=nothing,yaxis=nothing,legend=nothing,size=(600,600))
   end
 end
 
@@ -71,8 +84,8 @@ anim = @animate while nb-4>0
   else # Vertical (Y)
     plotUpdate(1)
   end
-  Plots.heatmap(grid, fill=true, c=cmap,xaxis=nothing,yaxis=nothing,legend=nothing,size=(600,600))
 end
+
 
 
 # * If you want get the labyrinth 
