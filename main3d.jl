@@ -170,97 +170,11 @@ gif(anim, "animLabyrinth3D.gif", fps = 15)
 
 
 
-# # ? Solving path
+# ? Solving path
+        
 # gridPath = zeros(n,n,n) # Here 0 is either a wall or a location more far than the exit
 # gridPath[enterRandX, 1, enterRandZ] = lengthPath = 1
 
 # xTemp = yTemp = zTemp = 0
-
-# function continuePath(PM, XYZ, nbIntersection) # P(lus)M(oins) : 0 => + ; 1 => -
-#     global lengthPath, gridPath, xPath, yPath, zPath, intersection, xTemp, yTemp
-#     X = Y = Z = 0
-#     if XYZ == 0
-#         X=1
-#     elseif XYZ == 1
-#         Y=1
-#     else
-#         Z=1
-#     end
-#     sign = (PM==0) ? 1 : -1
-  
-#     # I detect where are crossroads and look if the "path" go to an unknown path
-#     try
-#       if gridPath[xPath+sign*X, yPath+sign*Y, zPath+sign*Z]==0 && grid[xPath+sign*X, yPath+sign*Y, zPath+sign*Z]!=1
-#         if nbIntersection==0
-#           lengthPath+=1
-#           gridPath[xPath+sign*X, yPath+sign*Y, zPath+sign*Z]=lengthPath
-  
-#           xTemp = xPath + sign*X
-#           yTemp = yPath + sign*Y
-#           zTemp = zPath + sign*Z
-#         else 
-#           push!(intersection, (xPath, yPath, zPath, lengthPath-1))
-#         end
-#         return true
-#       end
-#     catch
-#       return false
-#     end
-  
-#     return false
-#   end
-
-#   xPath = enterRandX
-#   yPath = 1
-#   zPath = enterRandZ
-#   intersection = Array{Tuple{Int64, Int64, Int64, Int64},1}(undef, 0)
-
-  
-# while xPath!=exitRandX || yPath!=n || zPath!=exitRandZ
-#     nbIntersection = 0
-#     for i in [(0,0,0), (0,0,1), (0,1,0), (0,1,1), (1,0,0), (1,0,1), (1,1,0), (1,1,1)]
-#         if continuePath(i[1], i[2], i[3] nbIntersection)
-#         nbIntersection+=1
-#         end
-#     end
-
-#     if nbIntersection==0 # If it took the wrong path, it goes back and starts from a crossroads
-#         xPath = intersection[1][1]
-#         yPath = intersection[1][2]
-#         yPath = intersection[1][3]
-#         lengthPath = intersection[1][4]
-#         popfirst!(intersection)
-#     else
-#         xPath = xTemp
-#         yPath = yTemp
-#         zPath = zTemp
-#     end
-# end
-
-# xPathSolve = exitRand
-# yPathSolve = n
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
+# soon...
