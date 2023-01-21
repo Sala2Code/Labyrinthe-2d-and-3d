@@ -25,6 +25,7 @@ With your IDE, you can handle and better see the labyrinth.
 
 
 The solving path will be for soon (I hope). In all case, it's the same principle and functionning in main2d.jl : just add z axis.
+Moreover, the next update will get optimization for the lasts connexions.
 
 
 
