@@ -66,7 +66,6 @@ for i in 2:2:n
 end
 
 PlotlyJS.restyle!(p, lCubeColor, color=cmap[3:end] )
-p
 saveImg()
 
 # ? plot in grid
@@ -101,7 +100,7 @@ iExit = (exitRandZ-1)*n^2 + exitRandX + n*(n-1)
 PlotlyJS.restyle!(p, [iExit, iExit-n], color=cmap[end] )
 
 saveImg()
-p
+
 # ? create labyrinthe
 # TODO : Update too
 wOddRange = 3:2:n-2
@@ -156,7 +155,6 @@ while nb-4>0 || length(unique(grid))>2 # || length(unique(grid))>2 is not necess
         plotUpdate(2)
     end
 end
-p
 
 # To pause the gif's end
 for i in 1:10
@@ -167,7 +165,6 @@ anim = @animate for img in readdir("img3d/")
     Plots.plot(ImageMagick.load("img3d/"*img),xaxis=nothing,yaxis=nothing,legend=nothing,size=(600,600))
 end
 gif(anim, "animLabyrinth3D.gif", fps = 15)
-
 
 
 # ? Solving path
