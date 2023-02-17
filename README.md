@@ -1,5 +1,5 @@
 # Labyrinthe-2d-and-3d
-Kruskal algorithm with Julia in 2D and 3D
+Kruskal algorithm with Julia in 2D and 3D. Je test la longeuur de la descirption es tverfiie qui ca n'aille pas là où je pense que ça ira. Peut etre du lorem pispum serait mieux ?
 
 # 2D Labyrinth
 
