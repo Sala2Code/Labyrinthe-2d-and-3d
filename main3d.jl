@@ -23,7 +23,7 @@ iImg = 1
 function saveImg()
     global iImg
 
-    filename = "img/"*"$(lpad(iImg, 3, "0"))"*".png"
+    filename = "img3d/"*"$(lpad(iImg, 3, "0"))"*".png"
     PlotlyJS.savefig(p, filename)
     iImg+=1
 end
@@ -161,8 +161,8 @@ for i in 1:10
     saveImg()
 end
 
-anim = @animate for img in readdir("img/")
-    Plots.plot(ImageMagick.load("img/"*img),xaxis=nothing,yaxis=nothing,legend=nothing,size=(600,600))
+anim = @animate for img in readdir("img3d/")
+    Plots.plot(ImageMagick.load("img3d/"*img),xaxis=nothing,yaxis=nothing,legend=nothing,size=(600,600))
 end
 gif(anim, "animLabyrinth3D.gif", fps = 15)
 
