@@ -23,7 +23,7 @@ iImg = 1
 function saveImg()
     global iImg
 
-    filename = "img3d/"*"$(lpad(iImg, 3, "0"))"*".png"
+    filename = "img/"*"$(lpad(iImg, 3, "0"))"*".png"
     PlotlyJS.savefig(p, filename)
     iImg+=1
 end
