@@ -161,8 +161,8 @@ for i in 1:10
     saveImg()
 end
 
-anim = @animate for img in readdir("img3d/")
-    Plots.plot(ImageMagick.load("img3d/"*img),xaxis=nothing,yaxis=nothing,legend=nothing,size=(600,600))
+anim = @animate for img in readdir("img/")
+    Plots.plot(ImageMagick.load("img/"*img),xaxis=nothing,yaxis=nothing,legend=nothing,size=(600,600))
 end
 gif(anim, "animLabyrinth3D.gif", fps = 15)
 
