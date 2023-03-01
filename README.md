@@ -1,5 +1,5 @@
 # Labyrinthe-2d-and-3d
-Kruskal algorithm with Julia in 2D and 3D.
+Generator of maze and her solution with the Kruskal algorithm on Julia in 2D and 3D.
 
 # 2D Labyrinth
 
